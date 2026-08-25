@@ -18,7 +18,7 @@ function Button() {
   return (
     <div>
       <button onClick={handleClick2}>Click me!😜</button>
-      <button onClick={(e) => handleClick1(e)}>dcm😜</button>
+      {/* <button onClick={(e) => handleClick1(e)}>dcm😜</button> */}
     </div>
   )
 }
