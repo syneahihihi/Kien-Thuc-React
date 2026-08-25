@@ -1,16 +1,48 @@
-# React + Vite
+# ⚛️ Hành Trình Làm Chủ React JS (Bro Code)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Repository này lưu trữ toàn bộ mã nguồn, ghi chú lý thuyết và các bài tập thực hành trong quá trình học React JS theo chuỗi bài giảng của kênh **Bro Code**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📌 Công Nghệ Sử Dụng
 
-## React Compiler
+- **Framework/Library:** React JS
+- **Build Tool:** Vite
+- **Styling:** CSS Modules, Pure CSS
+- **Language:** JavaScript (ES6+), JSX
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 📚 Lộ Trình & Kiến Thức Đã Học
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- [x] **Setup & Basic Components:** Khởi tạo dự án Vite, cấu trúc thư mục, Function Components (`Header`, `Footer`, `Food`, `Card`).
+- [x] **Styling trong React:** CSS Modules (`Button.module.css`), Inline Styles, External CSS.
+- [x] **Props & PropTypes:** Truyền dữ liệu giữa các component, thiết lập `defaultProps` và `propTypes` (`Student.jsx`).
+- [x] **Conditional Rendering:** Render có điều kiện bằng toán tử ba ngôi (`UserGreeting.jsx`).
+- [ ] **Render Lists:** Hiển thị danh sách mảng dữ liệu với hàm `map()` và `key`.
+- [ ] **Click Events:** Xử lý sự kiện click chuột và truyền tham số qua event handler.
+- [ ] **React Hooks:**
+  - `useState()`: Quản lý trạng thái giao diện và form input.
+  - `useEffect()`: Xử lý Side Effects, Fetch API và Lifecycle.
+  - `useContext()`: Quản lý Global State mà không cần truyền props sâu (Prop Drilling).
+  - `useRef()`: Truy cập trực tiếp DOM và lưu giá trị không gây re-render.
+- [ ] **Mini Projects thực hành:** To-Do List App, Color Picker, Digital Clock, Stopwatch.
+
+---
+
+## 🚀 Hướng Dẫn Chạy Dự Án
+
+**1. Clone dự án về máy:**
+git clone [https://github.com/syneahihihi/Kien-Thuc-React.git](https://github.com/syneahihihi/Kien-Thuc-React.git)
+cd Kien-Thuc-React
+**2. Cài đặt các gói phụ thuộc (Dependencies):
+
+npm install
+3. Khởi chạy Local Development Server:
+
+Bash
+npm run dev
+👨‍💻 Tác Giả
+Developer: syneahihihi
+
+Nguồn tài liệu: Bro Code - React Full Course
