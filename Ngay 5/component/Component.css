@@ -1,0 +1,68 @@
+.component-demo {
+  width: 100%;
+  max-width: 520px;
+  margin: 40px auto;
+  padding: 0 12px 12px;
+  background: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111;
+}
+
+.component {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border: 3px solid #111;
+  background: #f7f7f7;
+  margin: 0;
+}
+
+.component-a {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.component-a h1,
+.component-b h1,
+.component-c h1,
+.component-d h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.component-a h2,
+.component-b h2,
+.component-c h2,
+.component-d h2 {
+  margin: 10px 0 0;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.component-b {
+  width: 92%;
+  margin-left: 18px;
+  padding: 14px 18px 16px;
+}
+
+.component-c {
+  width: 78%;
+  margin-left: 40px;
+  margin-top: 8px;
+  padding: 12px 18px 16px;
+}
+
+.component-d {
+  width: 58%;
+  margin: 10px auto 0;
+  padding: 20px 18px 18px;
+  text-align: center;
+}
+
+.component-d h2 {
+  margin-top: 12px;
+}
