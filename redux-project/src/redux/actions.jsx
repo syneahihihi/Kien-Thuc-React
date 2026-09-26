@@ -5,3 +5,9 @@ export const addTodo = (data) =>{
         payload: data
     }
 }
+export const setSearchFilter = (text) => {
+    return {
+        type: 'filters/setSearchFilter',
+        payload: text
+    }
+}
