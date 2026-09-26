@@ -1,8 +1,12 @@
 import { useState } from "react";
 import React from 'react'
+import {useDispatch, useSelector} from 'react-redux' 
+import { setSearchFilter } from "../../redux/actions";
 
 function Filters() {
     const [priority, setPriority] = useState(['High', 'Medium']);
+    const [searchText, setSearchText] = useState('');
+    const dispatch = useDispatch();
 
     const togglePriority = (value) => {
         setPriority((prev) => {
@@ -19,6 +23,11 @@ function Filters() {
         Low: 'priority-chip low',
     };
 
+    const handleSearchChange = (e) => {
+        setSearchText(e.target.value);
+        dispatch(setSearchFilter(e.target.value));
+    }
+
   return (
     <div className='filter-panel'>
       <h1 className="todo-title">TODO APP with REDUX</h1>
@@ -26,7 +35,7 @@ function Filters() {
       <div className="filter-section">
         <label className="filter-label">Search</label>
         <div className="search-box">
-          <input type="text" placeholder="input search text" />
+          <input type="text" placeholder="input search text" value={searchText} onChange={handleSearchChange} />
           <span className="search-icon">⌕</span>
         </div>
       </div>

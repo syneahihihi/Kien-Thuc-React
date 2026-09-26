@@ -1,14 +1,19 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector} from 'react-redux';
 import Todo from '../Todo';
 import {v4 as uuidv4} from 'uuid'
 import { useState } from 'react';
 import { addTodo } from '../../redux/actions';
+import {selectTodoList, searchTexts }from '../../redux/selectors';
 
 export default function TodoList() {
   const dispatch = useDispatch();
 
 const [todoName, setToDoName]= useState('');
 const [priority, setPriority]= useState('Medium');
+
+const todoList = useSelector(selectTodoList);
+const searchText = useSelector(searchTexts);
+
 const handleAddButtonClick = () => {
   dispatch(addTodo({
 id: uuidv4(),
@@ -19,19 +24,20 @@ completed: false,
 }
 const handleName = (e) =>{
   setToDoName(e.target.value);
-  console.log(e.target.value);
 }
 
-const handleSelect = (value) => {
-  console.log(value)
-  setPriority(value);
+const handleSelect = (e) => {
+  setPriority(e.target.value);
 }
   return (
     <div className="todo-list-wrap">
+
       <div className="todo-list">
-        <Todo name="Learn React" priority="High" defaultChecked />
-        <Todo name="Learn Redux" priority="Medium" defaultChecked />
-        <Todo name="Learn JavaScript" priority="Low" />
+        {todoList.map((todo) => (
+        <Todo 
+        key ={todo.id}
+        name={todo.name} priority={todo.priority}/>
+      ))}
       </div>
 
       <div className="todo-form">
