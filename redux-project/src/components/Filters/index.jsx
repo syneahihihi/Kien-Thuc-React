@@ -1,41 +1,51 @@
-import { useState } from "react";
-import React from 'react'
-import {useDispatch, useSelector} from 'react-redux' 
-import { setSearchFilter } from "../../redux/actions";
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setPriorityFilter,
+  setSearchFilter,
+  setStatusFilter,
+} from '../../redux/actions';
+
+const priorityClassMap = {
+  High: 'priority-chip high',
+  Medium: 'priority-chip medium',
+  Low: 'priority-chip low',
+};
 
 function Filters() {
-    const [priority, setPriority] = useState(['High', 'Medium']);
-    const [searchText, setSearchText] = useState('');
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const searchText = useSelector((state) => state.filters.search);
+  const status = useSelector((state) => state.filters.status);
+  const priorities = useSelector((state) => state.filters.priority);
 
-    const togglePriority = (value) => {
-        setPriority((prev) => {
-            if (prev.includes(value)) {
-                return prev.filter((item) => item !== value);
-            }
-            return [...prev, value];
-        });
-    };
+  const handleSearchChange = (event) => {
+    dispatch(setSearchFilter(event.target.value));
+  };
 
-    const priorityClassMap = {
-        High: 'priority-chip high',
-        Medium: 'priority-chip medium',
-        Low: 'priority-chip low',
-    };
+  const handleStatusChange = (event) => {
+    dispatch(setStatusFilter(event.target.value));
+  };
 
-    const handleSearchChange = (e) => {
-        setSearchText(e.target.value);
-        dispatch(setSearchFilter(e.target.value));
-    }
+  const handlePriorityToggle = (priority) => {
+    const nextPriorities = priorities.includes(priority)
+      ? priorities.filter((item) => item !== priority)
+      : [...priorities, priority];
+
+    dispatch(setPriorityFilter(nextPriorities));
+  };
 
   return (
-    <div className='filter-panel'>
+    <div className="filter-panel">
       <h1 className="todo-title">TODO APP with REDUX</h1>
 
       <div className="filter-section">
         <label className="filter-label">Search</label>
         <div className="search-box">
-          <input type="text" placeholder="input search text" value={searchText} onChange={handleSearchChange} />
+          <input
+            type="text"
+            placeholder="input search text"
+            value={searchText}
+            onChange={handleSearchChange}
+          />
           <span className="search-icon">⌕</span>
         </div>
       </div>
@@ -44,15 +54,33 @@ function Filters() {
         <label className="filter-label">Filter By Status</label>
         <div className="status-row">
           <label className="status-option">
-            <input type="radio" name="status" value="All" defaultChecked />
+            <input
+              type="radio"
+              name="status"
+              value="All"
+              checked={status === 'All'}
+              onChange={handleStatusChange}
+            />
             <span>All</span>
           </label>
           <label className="status-option">
-            <input type="radio" name="status" value="Completed" />
+            <input
+              type="radio"
+              name="status"
+              value="Completed"
+              checked={status === 'Completed'}
+              onChange={handleStatusChange}
+            />
             <span>Completed</span>
           </label>
           <label className="status-option">
-            <input type="radio" name="status" value="Todo" />
+            <input
+              type="radio"
+              name="status"
+              value="Todo"
+              checked={status === 'Todo'}
+              onChange={handleStatusChange}
+            />
             <span>To do</span>
           </label>
         </div>
@@ -65,8 +93,9 @@ function Filters() {
             <button
               type="button"
               key={p}
-              className={`${priorityClassMap[p]} ${priority.includes(p) ? 'selected' : ''}`}
-              onClick={() => togglePriority(p)}
+              className={`${priorityClassMap[p]} ${priorities.includes(p) ? 'selected' : ''}`}
+              aria-pressed={priorities.includes(p)}
+              onClick={() => handlePriorityToggle(p)}
             >
               <span>{p}</span>
               <span className="remove-tag">×</span>
@@ -75,7 +104,7 @@ function Filters() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Filters
+export default Filters;

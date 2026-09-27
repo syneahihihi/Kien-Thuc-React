@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { toggleTodo } from '../../redux/actions';
 
 const priorityClassMapping = {
   High: 'high',
@@ -6,20 +7,16 @@ const priorityClassMapping = {
   Low: 'low',
 };
 
-export default function Todo({ name, priority, defaultChecked = false }) {
-  const [checked, setChecked] = useState(defaultChecked);
-
-  const toggleCheckbox = () => {
-    setChecked(!checked);
-  };
+export default function Todo({ id, name, priority, completed }) {
+  const dispatch = useDispatch();
 
   return (
-    <div className={`todo-item ${checked ? 'checked' : ''}`}>
+    <div className={`todo-item ${completed ? 'checked' : ''}`}>
       <label className="todo-main">
         <input
           type="checkbox"
-          checked={checked}
-          onChange={toggleCheckbox}
+          checked={completed}
+          onChange={() => dispatch(toggleTodo(id))}
           id={`todo-${name}`}
         />
         <span className="todo-label">{name}</span>

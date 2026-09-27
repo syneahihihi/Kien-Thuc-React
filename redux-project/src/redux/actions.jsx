@@ -1,13 +1,3 @@
 
-export const addTodo = (data) =>{
-    return {
-        type: 'todoList/addTodo',
-        payload: data
-    }
-}
-export const setSearchFilter = (text) => {
-    return {
-        type: 'filters/setSearchFilter',
-        payload: text
-    }
-}
+export { addTodo, toggleTodoStatus, toggleTodoStatus as toggleTodo } from '../components/TodoList/TodoSlice';
+export { setPriorityFilter, setSearchFilter, setStatusFilter } from '../components/Filters/FilterSlice';
